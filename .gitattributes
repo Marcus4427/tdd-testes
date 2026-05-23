@@ -1,0 +1,15 @@
+# Normalize text files and enforce LF endings on important text files
+* text=auto
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Treat image and other binaries as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+
+# Node modules heavy files (optional, but safe)
+node_modules/** binary
