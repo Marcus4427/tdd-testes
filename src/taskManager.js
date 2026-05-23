@@ -1,8 +1,14 @@
-// Funções puras para o gerenciador de tarefas (to-do)
+/* Funções puras para o gerenciador de tarefas (to-do)
+   Refactor: centraliza validação de arrays em ensureTasksArray
+*/
 
 export function validateTitle(title) {
   if (typeof title !== 'string') return false;
   return title.trim().length >= 3;
+}
+
+function ensureTasksArray(tasks) {
+  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
 }
 
 export function createTask(title, id = 1) {
@@ -17,7 +23,7 @@ export function createTask(title, id = 1) {
 }
 
 export function addTask(tasks, title) {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   if (!validateTitle(title)) throw new Error('Invalid title');
 
   const nextId = tasks.length === 0 ? 1 : Math.max(...tasks.map((t) => t.id)) + 1;
@@ -31,12 +37,12 @@ export function toggleTask(task) {
 }
 
 export function removeTask(tasks, id) {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   return tasks.filter((t) => t.id !== id);
 }
 
 export function filterTasks(tasks, status = 'all') {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   if (status === 'all') return [...tasks];
   if (status === 'completed') return tasks.filter((t) => t.completed);
   if (status === 'pending') return tasks.filter((t) => !t.completed);
@@ -44,22 +50,22 @@ export function filterTasks(tasks, status = 'all') {
 }
 
 export function countTasks(tasks) {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   return tasks.length;
 }
 
 export function countCompleted(tasks) {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   return tasks.filter((t) => t.completed).length;
 }
 
 export function countPending(tasks) {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   return tasks.filter((t) => !t.completed).length;
 }
 
 export function updateTaskTitle(tasks, id, newTitle) {
-  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  ensureTasksArray(tasks);
   if (!validateTitle(newTitle)) throw new Error('Invalid title');
 
   return tasks.map((t) => (t.id === id ? { ...t, title: newTitle.trim() } : t));
@@ -75,4 +81,5 @@ export default {
   countTasks,
   countCompleted,
   countPending,
+  updateTaskTitle,
 };
