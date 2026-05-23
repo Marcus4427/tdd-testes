@@ -1,0 +1,30 @@
+{
+  "name": "tdd-testes",
+  "version": "1.0.0",
+  "description": "Aula prática de testes unitários com Vitest e TDD",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "main": "vitest.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcus4427/tdd-testes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcus4427/tdd-testes/issues"
+  },
+  "homepage": "https://github.com/Marcus4427/tdd-testes#readme",
+  "devDependencies": {
+    "@vitest/ui": "^4.1.7",
+    "vitest": "^4.1.7"
+  }
+}
