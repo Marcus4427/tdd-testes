@@ -22,4 +22,3 @@ npm run test:watch
 
 # gerar coverage
 npm run coverage
-```
