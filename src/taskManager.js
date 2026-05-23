@@ -58,6 +58,13 @@ export function countPending(tasks) {
   return tasks.filter((t) => !t.completed).length;
 }
 
+export function updateTaskTitle(tasks, id, newTitle) {
+  if (!Array.isArray(tasks)) throw new Error('tasks must be an array');
+  if (!validateTitle(newTitle)) throw new Error('Invalid title');
+
+  return tasks.map((t) => (t.id === id ? { ...t, title: newTitle.trim() } : t));
+}
+
 export default {
   validateTitle,
   createTask,
