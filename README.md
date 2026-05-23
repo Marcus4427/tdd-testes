@@ -23,5 +23,3 @@ npm run test:watch
 # gerar coverage
 npm run coverage
 ```
-
-Observação: você pediu para NÃO executar os testes ou enviar para o Git neste momento — estes arquivos foram criados prontos para uso. Se quiser, eu executo os testes agora ou faço commits locais seguindo o fluxo TDD (red/green/refactor) quando autorizar.
